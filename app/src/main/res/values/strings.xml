@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Unit convertor</string>
+
+    <string-array name="dropdown_items">
+        <item>Fahrenheit</item>
+        <item>Celsius</item>
+    </string-array>
+
+</resources>
+
+
+
