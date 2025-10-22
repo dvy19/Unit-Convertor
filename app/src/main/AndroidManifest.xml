@@ -27,6 +27,11 @@
             android:name=".WeightActivity"
             android:label="Screen 2"
             android:exported="true"/>
+
+        <activity
+            android:name=".SpeedActivity"
+            android:label="Screen 2"
+            android:exported="true"/>
     </application>
 
 </manifest>

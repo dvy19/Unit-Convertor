@@ -23,6 +23,16 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, WeightActivity::class.java)
             startActivity(intent) // Start the new screen
         }
+
+
+        val btnSpeed = findViewById<Button>(R.id.speed)
+
+        // Set click listener - what happens when button is clicked
+        btnSpeed.setOnClickListener {
+            // Create an Intent to navigate to SecondActivity
+            val intent = Intent(this, SpeedActivity::class.java)
+            startActivity(intent) // Start the new screen
+        }
     }
 
 

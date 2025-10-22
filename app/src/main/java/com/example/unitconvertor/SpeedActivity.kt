@@ -10,7 +10,7 @@ import android.widget.EditText
 import android.widget.Spinner
 import android.widget.TextView
 
-class WeightActivity : AppCompatActivity() {
+class SpeedActivity : AppCompatActivity() {
 
     private lateinit var inputNumber: EditText
     private lateinit var fromSpinner: Spinner
@@ -18,47 +18,50 @@ class WeightActivity : AppCompatActivity() {
     private lateinit var resultText: TextView
 
     // Available speed units
-    private val weightUnits = arrayOf("gm", "kg", "lbs")
+    private val speedUnits = arrayOf("m/s", "km/h", "mph", "ft/s")
 
     // Conversion rates to m/s (meters per second)
     private val conversionRates = mapOf(
-        "gm" to 1.0000,
-        "kg" to 1000.00000,
-        "lbs" to 453.5231,
-
+        "m/s" to 1.0,
+        "km/h" to 0.277778,
+        "mph" to 0.44704,
+        "ft/s" to 0.3048
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.weight_calculation)
+        setContentView(R.layout.speed_calculation)
 
-
-        inputNumber = findViewById(R.id.weight_input)
-        fromSpinner = findViewById(R.id.weight_from)
-        toSpinner = findViewById(R.id.weight_to)
+        // Connect XML elements to Kotlin code
+        inputNumber = findViewById(R.id.speed_input)
+        fromSpinner = findViewById(R.id.speed_from)
+        toSpinner = findViewById(R.id.speed_to)
         resultText = findViewById(R.id.output)
 
-
+        // Setup dropdowns with speed units
         setupSpinners()
+
+        // Add listeners to update result automatically
         setupListeners()
     }
 
     private fun setupSpinners() {
-
-        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, weightUnits)
+        // Create adapter for dropdowns
+        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, speedUnits)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
 
         // Set same adapter to both dropdowns
         fromSpinner.adapter = adapter
         toSpinner.adapter = adapter
 
+        // Set default selections
+        fromSpinner.setSelection(0) // m/s
 
-        fromSpinner.setSelection(0)
-        toSpinner.setSelection(1)
+        toSpinner.setSelection(1)   // km/h
     }
 
     private fun setupListeners() {
-
+        // Listen for text changes in input field
         inputNumber.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
@@ -89,11 +92,15 @@ class WeightActivity : AppCompatActivity() {
                 val fromUnit = fromSpinner.selectedItem.toString()
                 val toUnit = toSpinner.selectedItem.toString()
 
+                // Convert to base unit (m/s) then to target unit
 
+                /*
+
+                 */
                 val valueInBase = inputValue * conversionRates[fromUnit]!!
                 val result = valueInBase / conversionRates[toUnit]!!
 
-
+                // Display result with 2 decimal places
                 resultText.text = "Result: ${"%.2f".format(result)} $toUnit"
 
             } catch (e: NumberFormatException) {
