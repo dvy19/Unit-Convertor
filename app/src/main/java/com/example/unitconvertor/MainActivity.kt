@@ -33,6 +33,35 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, SpeedActivity::class.java)
             startActivity(intent) // Start the new screen
         }
+
+        val btnTemp = findViewById<Button>(R.id.temp_calc)
+
+        // Set click listener - what happens when button is clicked
+        btnTemp.setOnClickListener {
+            // Create an Intent to navigate to SecondActivity
+            val intent = Intent(this, tempActivity::class.java)
+            startActivity(intent) // Start the new screen
+        }
+
+
+
+        val btnLength = findViewById<Button>(R.id.length_calc)
+
+        // Set click listener - what happens when button is clicked
+        btnLength.setOnClickListener {
+            // Create an Intent to navigate to SecondActivity
+            val intent = Intent(this, lengthActivity::class.java)
+            startActivity(intent) // Start the new screen
+        }
+
+        val btnTime = findViewById<Button>(R.id.time_calc)
+
+        // Set click listener - what happens when button is clicked
+        btnTime.setOnClickListener {
+            // Create an Intent to navigate to SecondActivity
+            val intent = Intent(this,timeActivity::class.java)
+            startActivity(intent) // Start the new screen
+        }
     }
 
 
