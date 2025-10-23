@@ -9,10 +9,10 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Select a Unit"
+        android:text="@string/app_heading"
         android:textColor="#D5FAFD"
         android:textSize="24sp"
-        android:layout_marginStart="14dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="43dp"
 
         />
@@ -20,7 +20,6 @@
 
 
     <GridLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:columnCount="3"
@@ -46,6 +45,7 @@
                 >
 
                 <ImageView
+                    android:contentDescription="@string/weight"
                     android:layout_width="61dp"
                     android:layout_gravity="center"
                     android:layout_height="59dp"
@@ -53,15 +53,16 @@
 
             </androidx.cardview.widget.CardView>
 
-            <Button
+            <TextView
                 android:id="@+id/weight"
                 android:layout_width="77dp"
-                android:layout_height="wrap_content"
-                android:text="Weight"
-                android:textSize="10sp"
+                android:layout_height="48dp"
+                android:text="@string/weight"
+                android:gravity="center"
+                android:textSize="15sp"
                 android:layout_gravity="center"
                 android:textColor="@color/white"
-                android:layout_marginBottom="26dp"
+                android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"/>
 
 
@@ -85,6 +86,7 @@
                 >
 
                 <ImageView
+                    android:contentDescription="@string/volume"
                     android:layout_width="61dp"
                     android:layout_gravity="center"
                     android:layout_height="59dp"
@@ -92,18 +94,19 @@
 
             </androidx.cardview.widget.CardView>
 
-            <Button
-                android:id="@+id/volum_calc"
+            <TextView
+                android:id="@+id/volume_calc"
                 android:layout_width="75dp"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
                 android:clickable="true"
                 android:textAllCaps="false"
                 android:focusable="true"
-                android:text="Volume"
-                android:textSize="10sp"
+                android:text="@string/volume"
+                android:gravity="center"
+                android:textSize="15sp"
                 android:layout_gravity="center"
                 android:textColor="@color/white"
-                android:layout_marginBottom="26dp"
+                android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"/>
 
 
@@ -128,6 +131,7 @@
                 >
 
                 <ImageView
+                    android:contentDescription="@string/length"
                     android:layout_width="61dp"
                     android:layout_gravity="center"
                     android:layout_height="59dp"
@@ -135,12 +139,13 @@
 
             </androidx.cardview.widget.CardView>
 
-            <Button
+            <TextView
                 android:id="@+id/length_calc"
                 android:layout_width="76dp"
-                android:layout_height="wrap_content"
-                android:text="Length"
-                android:textSize="10sp"
+                android:layout_height="48dp"
+                android:text="@string/length"
+                android:textSize="15sp"
+                android:gravity="center"
                 android:clickable="true"
                 android:focusable="true"
                 android:textAllCaps="false"
@@ -171,6 +176,7 @@
                 >
 
                 <ImageView
+                    android:contentDescription="@string/area"
                     android:layout_width="61dp"
                     android:layout_gravity="center"
                     android:layout_height="59dp"
@@ -180,12 +186,12 @@
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Area"
+                android:layout_height="48dp"
+                android:text="@string/area"
                 android:textSize="16sp"
                 android:layout_gravity="center"
                 android:textColor="@color/white"
-                android:layout_marginBottom="26dp"
+                android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"/>
 
 
@@ -199,6 +205,7 @@
             android:paddingStart="10dp"
             android:paddingEnd="10dp"
 
+
             >
 
             <androidx.cardview.widget.CardView
@@ -210,6 +217,7 @@
                 >
 
                 <ImageView
+                    android:contentDescription="@string/speed"
                     android:layout_width="61dp"
                     android:layout_gravity="center"
                     android:layout_height="59dp"
@@ -219,12 +227,12 @@
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Storage"
+                android:layout_height="48dp"
+                android:text="@string/storage"
                 android:textSize="16sp"
                 android:layout_gravity="center"
                 android:textColor="@color/white"
-                android:layout_marginBottom="26dp"
+                android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"/>
 
 
@@ -249,6 +257,7 @@
                 >
 
                 <ImageView
+                    android:contentDescription="@string/pressure"
                     android:layout_width="61dp"
                     android:layout_gravity="center"
                     android:layout_height="59dp"
@@ -258,12 +267,15 @@
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Pressure"
+                android:layout_height="48dp"
+                android:text="@string/pressure"
                 android:textSize="16sp"
+                android:id="@+id/pressure_calc"
+                android:clickable="true"
+                android:focusable="true"
                 android:layout_gravity="center"
                 android:textColor="@color/white"
-                android:layout_marginBottom="26dp"
+                android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"/>
 
 
@@ -293,20 +305,21 @@
                     android:layout_height="59dp"
                     android:clickable="true"
                     android:focusable="true"
-                    android:contentDescription="speedIcon"
+                    android:contentDescription="@string/speed"
                     android:src="@drawable/speed"/>
 
             </androidx.cardview.widget.CardView>
 
-            <Button
+            <TextView
                 android:id="@+id/speed"
                 android:clickable="true"
                 android:focusable="true"
 
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Speed"
-                android:textSize="16sp"
+                android:layout_height="48dp"
+                android:text="@string/speed"
+                android:textSize="15sp"
+                android:gravity="center"
                 android:layout_gravity="center"
                 android:textColor="@color/white"
                 android:layout_marginBottom="26dp"
@@ -334,6 +347,7 @@
                 >
 
                 <ImageView
+                    android:contentDescription="@string/temp"
                     android:layout_width="61dp"
                     android:layout_gravity="center"
                     android:layout_height="59dp"
@@ -341,15 +355,16 @@
 
             </androidx.cardview.widget.CardView>
 
-            <Button
+            <TextView
                 android:id="@+id/temp_calc"
                 android:clickable="true"
                 android:focusable="true"
                 android:layout_width="76dp"
                 android:textAllCaps="false"
-                android:layout_height="wrap_content"
-                android:text="Temperature"
-                android:textSize="10sp"
+                android:layout_height="48dp"
+                android:text="@string/temp"
+                android:textSize="15sp"
+                android:gravity="center"
                 android:layout_gravity="center"
                 android:textColor="@color/white"
                 android:layout_marginBottom="26dp"
@@ -377,6 +392,7 @@
                 >
 
                 <ImageView
+                    android:contentDescription="@string/time"
                     android:layout_width="61dp"
                     android:layout_gravity="center"
                     android:layout_height="59dp"
@@ -384,15 +400,16 @@
 
             </androidx.cardview.widget.CardView>
 
-            <Button
+            <TextView
                 android:id="@+id/time_calc"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Time"
+                android:layout_height="48dp"
+                android:text="@string/time"
                 android:textAllCaps="false"
                 android:clickable="true"
                 android:focusable="true"
-                android:textSize="10sp"
+                android:textSize="15sp"
+                android:gravity="center"
                 android:layout_gravity="center"
                 android:textColor="@color/white"
                 android:layout_marginBottom="26dp"

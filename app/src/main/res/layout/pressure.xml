@@ -22,7 +22,7 @@
             android:paddingStart="16dp"
             android:paddingEnd="16dp"
             android:layout_marginBottom="20dp"
-            android:id="@+id/time_input"
+            android:id="@+id/pressure_input"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:background="@drawable/inputs"
@@ -34,7 +34,7 @@
             />
 
         <Spinner
-            android:id="@+id/time_from"
+            android:id="@+id/pressure_from"
             android:layout_width="150dp"
             android:layout_height="48dp"
             android:background="@drawable/spinner_background"
@@ -52,7 +52,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-      android:layout_marginTop="150dp"
+        android:layout_marginTop="150dp"
         android:orientation="vertical">
 
         <EditText
@@ -72,7 +72,7 @@
             />
 
         <Spinner
-            android:id="@+id/time_to"
+            android:id="@+id/pressure_to"
             android:layout_width="150dp"
             android:layout_height="48dp"
             android:background="@drawable/spinner_background"
@@ -90,7 +90,7 @@
     <Button
         android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:text="Back"
+        android:text="@string/back"
         android:id="@+id/back_btn"
         android:textSize="20sp"
         android:textAllCaps="false"
