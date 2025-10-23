@@ -17,17 +17,16 @@
         android:orientation="vertical">
 
         <EditText
-            android:textColorHint="@color/white"
-            android:inputType="number"
             android:paddingTop="19dp"
             android:paddingBottom="19dp"
             android:paddingStart="16dp"
             android:paddingEnd="16dp"
             android:layout_marginBottom="20dp"
-            android:id="@+id/pressure_input"
+            android:id="@+id/area_input"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:background="@drawable/inputs"
+            android:textColorHint="@color/white"
 
             android:textStyle="bold"
             android:hint="@string/input_hint"
@@ -36,11 +35,12 @@
             />
 
         <Spinner
-            android:id="@+id/pressure_from"
+            android:id="@+id/area_from"
             android:layout_width="150dp"
             android:layout_height="48dp"
             android:background="@drawable/spinner_background"
             android:padding="10dp"
+
 
 
             />
@@ -76,7 +76,7 @@
             />
 
         <Spinner
-            android:id="@+id/pressure_to"
+            android:id="@+id/area_to"
             android:layout_width="150dp"
             android:layout_height="48dp"
             android:background="@drawable/spinner_background"
@@ -98,9 +98,7 @@
         android:id="@+id/back_btn"
         android:textSize="20sp"
         android:textAllCaps="false"
-
         android:textColor="@color/white"
-
         android:background="@drawable/back_button"
         android:layout_marginTop="30dp"
         android:paddingStart="10dp"

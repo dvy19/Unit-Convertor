@@ -1,5 +1,6 @@
 package com.example.unitconvertor
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
@@ -9,6 +10,8 @@ import android.widget.ArrayAdapter
 import android.widget.EditText
 import android.widget.Spinner
 import android.widget.TextView
+
+import android.widget.Button
 
 class tempActivity : AppCompatActivity() {
 
@@ -36,7 +39,14 @@ class tempActivity : AppCompatActivity() {
         toSpinner = findViewById(R.id.temp_to)
         resultText = findViewById(R.id.output)
 
-        // Setup dropdowns with speed units
+        val backBtn = findViewById<Button>(R.id.back_btn)
+        backBtn.setOnClickListener {
+
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
+
+
         setupSpinners()
 
         // Add listeners to update result automatically

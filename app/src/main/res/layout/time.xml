@@ -17,6 +17,8 @@
         android:orientation="vertical">
 
         <EditText
+            android:textColorHint="@color/white"
+
             android:paddingTop="19dp"
             android:paddingBottom="19dp"
             android:paddingStart="16dp"
@@ -49,6 +51,7 @@
     </LinearLayout>
 
     <LinearLayout
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -56,6 +59,8 @@
         android:orientation="vertical">
 
         <EditText
+            android:textColorHint="@color/white"
+
             android:id="@+id/output"
             android:layout_marginBottom="20dp"
             android:layout_width="250dp"

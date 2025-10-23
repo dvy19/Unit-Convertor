@@ -1,5 +1,6 @@
 package com.example.unitconvertor
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
@@ -9,6 +10,8 @@ import android.widget.ArrayAdapter
 import android.widget.EditText
 import android.widget.Spinner
 import android.widget.TextView
+
+import android.widget.Button
 
 class SpeedActivity : AppCompatActivity() {
 
@@ -32,16 +35,23 @@ class SpeedActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.speed_calculation)
 
-        // Connect XML elements to Kotlin code
+
         inputNumber = findViewById(R.id.speed_input)
         fromSpinner = findViewById(R.id.speed_from)
         toSpinner = findViewById(R.id.speed_to)
         resultText = findViewById(R.id.output)
 
-        // Setup dropdowns with speed units
+        val backBtn = findViewById<Button>(R.id.back_btn)
+        backBtn.setOnClickListener {
+
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
+
+
         setupSpinners()
 
-        // Add listeners to update result automatically
+
         setupListeners()
     }
 
@@ -92,11 +102,7 @@ class SpeedActivity : AppCompatActivity() {
                 val fromUnit = fromSpinner.selectedItem.toString()
                 val toUnit = toSpinner.selectedItem.toString()
 
-                // Convert to base unit (m/s) then to target unit
 
-                /*
-
-                 */
                 val valueInBase = inputValue * conversionRates[fromUnit]!!
                 val result = valueInBase / conversionRates[toUnit]!!
 

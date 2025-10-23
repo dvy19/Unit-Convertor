@@ -47,6 +47,26 @@
             android:name=".timeActivity"
             android:label="Screen 2"
             android:exported="true"/>
+
+        <activity
+            android:name=".storageActivity"
+            android:label="Screen 2"
+            android:exported="true"/>
+
+        <activity
+        android:name=".areaActivity"
+        android:label="Screen 2"
+        android:exported="true"/>
+
+        <activity
+        android:name=".pressureActivity"
+        android:label="Screen 2"
+        android:exported="true"/>
+
+        <activity
+            android:name=".volumeActivity"
+            android:label="Screen 2"
+            android:exported="true"/>
     </application>
 
 </manifest>

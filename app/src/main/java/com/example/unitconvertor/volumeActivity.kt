@@ -1,5 +1,6 @@
 package com.example.unitconvertor
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
@@ -9,6 +10,8 @@ import android.widget.ArrayAdapter
 import android.widget.EditText
 import android.widget.Spinner
 import android.widget.TextView
+
+import android.widget.Button
 
 class volumeActivity : AppCompatActivity() {
 
@@ -35,6 +38,13 @@ class volumeActivity : AppCompatActivity() {
         fromSpinner = findViewById(R.id.weight_from)
         toSpinner = findViewById(R.id.weight_to)
         resultText = findViewById(R.id.output)
+
+        val backBtn = findViewById<Button>(R.id.back_btn)
+        backBtn.setOnClickListener {
+
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
 
 
         setupSpinners()

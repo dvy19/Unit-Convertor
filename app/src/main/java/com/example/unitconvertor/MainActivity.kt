@@ -18,62 +18,78 @@ class MainActivity : AppCompatActivity() {
 
         val btnWeight = findViewById<TextView>(R.id.weight)
 
-        // Set click listener - what happens when button is clicked
+
         btnWeight.setOnClickListener {
-            // Create an Intent to navigate to SecondActivity
+
             val intent = Intent(this, WeightActivity::class.java)
-            startActivity(intent) // Start the new screen
+            startActivity(intent)
         }
 
 
         val btnSpeed = findViewById<TextView>(R.id.speed)
 
-        // Set click listener - what happens when button is clicked
+
         btnSpeed.setOnClickListener {
-            // Create an Intent to navigate to SecondActivity
+
             val intent = Intent(this, SpeedActivity::class.java)
-            startActivity(intent) // Start the new screen
+            startActivity(intent)
         }
 
         val btnTemp = findViewById<TextView>(R.id.temp_calc)
 
-        // Set click listener - what happens when button is clicked
+
         btnTemp.setOnClickListener {
-            // Create an Intent to navigate to SecondActivity
+
             val intent = Intent(this, tempActivity::class.java)
-            startActivity(intent) // Start the new screen
+            startActivity(intent)
         }
 
 
 
         val btnLength = findViewById<TextView>(R.id.length_calc)
 
-        // Set click listener - what happens when button is clicked
+
         btnLength.setOnClickListener {
-            // Create an Intent to navigate to SecondActivity
+
             val intent = Intent(this, lengthActivity::class.java)
-            startActivity(intent) // Start the new screen
-        }
+            startActivity(intent)
 
         val btnTime = findViewById<TextView>(R.id.time_calc)
 
-        // Set click listener - what happens when button is clicked
+
         btnTime.setOnClickListener {
             // Create an Intent to navigate to SecondActivity
             val intent = Intent(this,timeActivity::class.java)
-            startActivity(intent) // Start the new screen
+            startActivity(intent)
         }
 
 
         val btnPressure = findViewById<TextView>(R.id.pressure_calc)
 
-        // Set click listener - what happens when button is clicked
+
         btnPressure.setOnClickListener {
-            // Create an Intent to navigate to SecondActivity
+
             val intent = Intent(this,pressureActivity::class.java)
-            startActivity(intent) // Start the new screen
+            startActivity(intent)
         }
+
+        val btnStorage = findViewById<TextView>(R.id.storage_calc)
+        btnStorage.setOnClickListener {
+
+            val intent = Intent(this,storageActivity::class.java)
+            startActivity(intent)
+        }
+
+
+            val btnArea = findViewById<TextView>(R.id.area_calc)
+
+
+            btnArea.setOnClickListener {
+
+                val intent = Intent(this,areaActivity::class.java)
+                startActivity(intent)
+            }
     }
 
 
-}
+}}

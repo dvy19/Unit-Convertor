@@ -13,7 +13,7 @@ import android.widget.TextView
 
 import android.widget.Button
 
-class timeActivity : AppCompatActivity() {
+class areaActivity : AppCompatActivity() {
 
     private lateinit var inputNumber: EditText
     private lateinit var fromSpinner: Spinner
@@ -21,23 +21,24 @@ class timeActivity : AppCompatActivity() {
     private lateinit var resultText: TextView
 
     // Available speed units
-    private val timeUnits = arrayOf("s", "min", "hrs")
+    private val areaUnits = arrayOf("cm", "m", "km")
 
-    // how many of my base units are in one of this unit.
+    // Conversion rates to m/s (meters per second)
     private val conversionRates = mapOf(
-        "s" to 1.0 ,
-        "min" to 60.0,
-        "hrs" to 3600.00000,
+        "cm" to 1.0,
+        "m" to 1.0e4,
+        "km" to 1.0e6,
+
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.time)
+        setContentView(R.layout.area)
 
-
-        inputNumber = findViewById(R.id.time_input)
-        fromSpinner = findViewById(R.id.time_from)
-        toSpinner = findViewById(R.id.time_to)
+        // Connect XML elements to Kotlin code
+        inputNumber = findViewById(R.id.area_input)
+        fromSpinner = findViewById(R.id.area_from)
+        toSpinner = findViewById(R.id.area_to)
         resultText = findViewById(R.id.output)
 
 
@@ -49,26 +50,30 @@ class timeActivity : AppCompatActivity() {
         }
 
 
+        // Setup dropdowns with speed units
         setupSpinners()
+
+        // Add listeners to update result automatically
         setupListeners()
     }
 
     private fun setupSpinners() {
-
-        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, timeUnits)
+        // Create adapter for dropdowns
+        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, areaUnits)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
 
         // Set same adapter to both dropdowns
         fromSpinner.adapter = adapter
         toSpinner.adapter = adapter
 
+        // Set default selections
+        fromSpinner.setSelection(0) // m/s
 
-        fromSpinner.setSelection(0)
-        toSpinner.setSelection(1)
+        toSpinner.setSelection(1)   // km/h
     }
 
     private fun setupListeners() {
-
+        // Listen for text changes in input field
         inputNumber.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
@@ -92,7 +97,7 @@ class timeActivity : AppCompatActivity() {
     private fun calculateResult() {
         val inputText = inputNumber.text.toString()
 
-        // Check if input is not empty and is a valid number
+
         if (inputText.isNotEmpty()) {
             try {
                 val inputValue = inputText.toDouble()
@@ -103,7 +108,7 @@ class timeActivity : AppCompatActivity() {
                 val valueInBase = inputValue * conversionRates[fromUnit]!!
                 val result = valueInBase / conversionRates[toUnit]!!
 
-
+                // Display result with 2 decimal places
                 resultText.text = "Result: ${"%.2f".format(result)} $toUnit"
 
             } catch (e: NumberFormatException) {

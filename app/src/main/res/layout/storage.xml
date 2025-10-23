@@ -18,13 +18,13 @@
 
         <EditText
             android:textColorHint="@color/white"
-            android:inputType="number"
+
             android:paddingTop="19dp"
             android:paddingBottom="19dp"
             android:paddingStart="16dp"
             android:paddingEnd="16dp"
             android:layout_marginBottom="20dp"
-            android:id="@+id/pressure_input"
+            android:id="@+id/storage_input"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:background="@drawable/inputs"
@@ -36,7 +36,7 @@
             />
 
         <Spinner
-            android:id="@+id/pressure_from"
+            android:id="@+id/storage_from"
             android:layout_width="150dp"
             android:layout_height="48dp"
             android:background="@drawable/spinner_background"
@@ -76,7 +76,7 @@
             />
 
         <Spinner
-            android:id="@+id/pressure_to"
+            android:id="@+id/storage_to"
             android:layout_width="150dp"
             android:layout_height="48dp"
             android:background="@drawable/spinner_background"
