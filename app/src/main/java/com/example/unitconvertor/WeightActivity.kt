@@ -10,51 +10,52 @@ import android.widget.ArrayAdapter
 import android.widget.EditText
 import android.widget.Spinner
 import android.widget.TextView
-
 import android.widget.Button
 
 class WeightActivity : AppCompatActivity() {
 
     private lateinit var inputNumber: EditText
+    private lateinit var outputNumber: EditText
     private lateinit var fromSpinner: Spinner
     private lateinit var toSpinner: Spinner
-    private lateinit var resultText: TextView
+    //private lateinit var resultText: TextView
 
     // Available speed units
-    private val weightUnits = arrayOf("gm", "kg", "lbs")
+    private val weightUnits = arrayOf("Pa", "bar", "kPa")
 
-    // Conversion rates to m/s (meters per second)
+    // how many of my base units are in one of this unit.
     private val conversionRates = mapOf(
-        "gm" to 1.0000,
-        "kg" to 1000.00000,
-        "lbs" to 453.5231,
-
+        "Pa" to 1.0,
+        "bar" to 1.0e5,
+        "kPa" to 1000.000,
     )
+
+    // To prevent infinite loop when programmatically setting text
+    private var isConvertingFromInput = false
+    private var isConvertingFromOutput = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.weight_calculation)
 
-
         inputNumber = findViewById(R.id.weight_input)
+        outputNumber = findViewById(R.id.weight_output) // Assuming this is your second input field
         fromSpinner = findViewById(R.id.weight_from)
         toSpinner = findViewById(R.id.weight_to)
-        resultText = findViewById(R.id.output)
+        //resultText = findViewById(R.id.output)
 
-        val backBtn = findViewById<Button>(R.id.back_btn)
+        val backBtn = findViewById<TextView>(R.id.back_btn)
         backBtn.setOnClickListener {
-
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
+            finish()
         }
-
 
         setupSpinners()
         setupListeners()
     }
 
     private fun setupSpinners() {
-
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, weightUnits)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
 
@@ -62,25 +63,46 @@ class WeightActivity : AppCompatActivity() {
         fromSpinner.adapter = adapter
         toSpinner.adapter = adapter
 
-
         fromSpinner.setSelection(0)
         toSpinner.setSelection(1)
     }
 
     private fun setupListeners() {
-
+        // Listener for first input field (weight_input)
         inputNumber.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
             override fun afterTextChanged(s: Editable?) {
-                calculateResult()
+                if (!isConvertingFromOutput) {
+                    isConvertingFromInput = true
+                    convertFromInputToOutput()
+                    isConvertingFromInput = false
+                }
+            }
+        })
+
+        // Listener for second input field (len_output)
+        outputNumber.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+            override fun afterTextChanged(s: Editable?) {
+                if (!isConvertingFromInput) {
+                    isConvertingFromOutput = true
+                    convertFromOutputToInput()
+                    isConvertingFromOutput = false
+                }
             }
         })
 
         // Listen for selection changes in both dropdowns
         val spinnerListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: android.view.View?, position: Int, id: Long) {
-                calculateResult()
+                // When spinner changes, convert based on which field has content
+                when {
+                    inputNumber.text.isNotEmpty() -> convertFromInputToOutput()
+                    outputNumber.text.isNotEmpty() -> convertFromOutputToInput()
+                    //else -> resultText.text = "Enter a number in any field"
+                }
             }
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
@@ -89,28 +111,56 @@ class WeightActivity : AppCompatActivity() {
         toSpinner.onItemSelectedListener = spinnerListener
     }
 
-    private fun calculateResult() {
+    private fun convertFromInputToOutput() {
         val inputText = inputNumber.text.toString()
 
-        // Check if input is not empty and is a valid number
         if (inputText.isNotEmpty()) {
             try {
                 val inputValue = inputText.toDouble()
                 val fromUnit = fromSpinner.selectedItem.toString()
                 val toUnit = toSpinner.selectedItem.toString()
 
-
                 val valueInBase = inputValue * conversionRates[fromUnit]!!
                 val result = valueInBase / conversionRates[toUnit]!!
 
-
-                resultText.text = "Result: ${"%.2f".format(result)} $toUnit"
+                // Update the output field
+                outputNumber.setText("%.4f".format(result))
+                //resultText.text = "Conversion: ${"%.2f".format(inputValue)} $fromUnit = ${"%.4f".format(result)} $toUnit"
 
             } catch (e: NumberFormatException) {
-                resultText.text = "Please enter a valid number"
+                //resultText.text = "Please enter a valid number"
+                outputNumber.text.clear()
             }
         } else {
-            resultText.text = "Enter a number above"
+            //resultText.text = "Enter a number in any field"
+            outputNumber.text.clear()
+        }
+    }
+
+    private fun convertFromOutputToInput() {
+        val outputText = outputNumber.text.toString()
+
+        if (outputText.isNotEmpty()) {
+            try {
+                val outputValue = outputText.toDouble()
+                val fromUnit = fromSpinner.selectedItem.toString()
+                val toUnit = toSpinner.selectedItem.toString()
+
+                // Reverse conversion: output is in "toUnit", convert back to "fromUnit"
+                val valueInBase = outputValue * conversionRates[toUnit]!!
+                val result = valueInBase / conversionRates[fromUnit]!!
+
+                // Update the input field
+                inputNumber.setText("%.4f".format(result))
+                //resultText.text = "Conversion: ${"%.2f".format(outputValue)} $toUnit = ${"%.4f".format(result)} $fromUnit"
+
+            } catch (e: NumberFormatException) {
+                //resultText.text = "Please enter a valid number"
+                inputNumber.text.clear()
+            }
+        } else {
+            //resultText.text = "Enter a number in any field"
+            inputNumber.text.clear()
         }
     }
 }

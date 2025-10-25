@@ -15,7 +15,7 @@
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:label="@string/app_name"
+
             android:theme="@style/Theme.MyApp">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,48 +25,47 @@
 
         <activity
             android:name=".WeightActivity"
-            android:label="Screen 2"
-            android:exported="true"/>
+
+            android:exported="false"/>
 
         <activity
             android:name=".SpeedActivity"
-            android:label="Screen 2"
-            android:exported="true"/>
+            android:exported="false"/>
 
         <activity
             android:name=".tempActivity"
-            android:label="Screen 2"
-            android:exported="true"/>
+
+            android:exported="false"/>
 
         <activity
             android:name=".lengthActivity"
-            android:label="Screen 2"
-            android:exported="true"/>
+
+            android:exported="false"/>
 
         <activity
             android:name=".timeActivity"
-            android:label="Screen 2"
-            android:exported="true"/>
+
+            android:exported="false"/>
 
         <activity
             android:name=".storageActivity"
-            android:label="Screen 2"
-            android:exported="true"/>
+
+            android:exported="false"/>
 
         <activity
         android:name=".areaActivity"
-        android:label="Screen 2"
-        android:exported="true"/>
+
+        android:exported="false"/>
 
         <activity
         android:name=".pressureActivity"
-        android:label="Screen 2"
-        android:exported="true"/>
+
+        android:exported="false"/>
 
         <activity
             android:name=".volumeActivity"
-            android:label="Screen 2"
-            android:exported="true"/>
+
+            android:exported="false"/>
     </application>
 
 </manifest>
