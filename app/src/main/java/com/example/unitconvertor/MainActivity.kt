@@ -17,101 +17,102 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.homescreen)
 
-        val btnWeight = findViewById<TextView>(R.id.weight)
+        val btnWeight = findViewById<LinearLayout>(R.id.weight)
         btnWeight.setOnClickListener {
             val intent = Intent(this, WeightActivity::class.java)
             startActivity(intent)
+            finish()
         }
 
 
-        val btnSpeed = findViewById<TextView>(R.id.speed)
+        val btnSpeed = findViewById<LinearLayout>(R.id.speed_calc)
         btnSpeed.setOnClickListener {
 
             val intent = Intent(this, SpeedActivity::class.java)
             startActivity(intent)
+            finish()
         }
 
-        val btnVolume = findViewById<TextView>(R.id.volume_calc)
+        val btnVolume = findViewById<LinearLayout>(R.id.volume_calc)
         btnVolume.setOnClickListener {
 
             val intent = Intent(this, volumeActivity::class.java)
             startActivity(intent)
+            finish()
         }
 
-        val btnStorage = findViewById<TextView>(R.id.storage_calc)
+        val btnStorage = findViewById<LinearLayout>(R.id.storage_calc)
         btnStorage.setOnClickListener {
 
             val intent = Intent(this, storageActivity::class.java)
             startActivity(intent)
+            finish()
         }
 
 
-        val btnTemp = findViewById<TextView>(R.id.temp_calc)
+        val btnTemp = findViewById<LinearLayout>(R.id.temp_calc)
         btnTemp.setOnClickListener {
 
             val intent = Intent(this, tempActivity::class.java)
             startActivity(intent)
+            finish()
         }
 
 
-        val btnLength = findViewById<TextView>(R.id.length_calc)
+        val btnLength = findViewById<LinearLayout>(R.id.length_calc)
         btnLength.setOnClickListener {
 
             val intent = Intent(this, lengthActivity::class.java)
             startActivity(intent)
+            finish()
 
-        val btnTime = findViewById<TextView>(R.id.time_calc)
+        val btnTime = findViewById<LinearLayout>(R.id.time_calc)
 
         btnTime.setOnClickListener {
 
             val intent = Intent(this,timeActivity::class.java)
             startActivity(intent)
+            finish()
         }
 
 
-        val btnPressure = findViewById<TextView>(R.id.pressure_calc)
+        val btnPressure = findViewById<LinearLayout>(R.id.pressure_calc)
         btnPressure.setOnClickListener {
 
             val intent = Intent(this,pressureActivity::class.java)
             startActivity(intent)
+            finish()
         }
 
-        val btnStorage = findViewById<TextView>(R.id.storage_calc)
+        val btnStorage = findViewById<LinearLayout>(R.id.storage_calc)
         btnStorage.setOnClickListener {
 
             val intent = Intent(this,storageActivity::class.java)
             startActivity(intent)
+            finish()
         }
 
 
-            val btnArea = findViewById<TextView>(R.id.area_calc)
-            btnArea.setOnClickListener {
 
-                val intent = Intent(this,areaActivity::class.java)
-                startActivity(intent)
-            }
     }
 
-        val btnPressure = findViewById<TextView>(R.id.pressure_calc)
-        btnPressure.setOnClickListener {
 
-            val intent = Intent(this, pressureActivity::class.java)
-            startActivity(intent)
-        }
-
-        val btnTime = findViewById<TextView>(R.id.time_calc)
+        val btnTime = findViewById<LinearLayout>(R.id.time_calc)
         btnTime.setOnClickListener {
 
             val intent = Intent(this, timeActivity::class.java)
             startActivity(intent)
+            finish()
         }
 
-        val btnArea = findViewById<TextView>(R.id.area_calc)
+        val btnArea = findViewById<LinearLayout>(R.id.area_calc)
         btnArea.setOnClickListener {
 
             val intent = Intent(this, areaActivity::class.java)
             startActivity(intent)
+            finish()
         }
+
 
 
 }}

@@ -126,7 +126,7 @@ class storageActivity : AppCompatActivity() {
                 val result = valueInBase / conversionRates[toUnit]!!
 
                 // Update the output field
-                outputNumber.setText("%.4f".format(result))
+                outputNumber.setText("%.2f".format(result))
                 //resultText.text = "Conversion: ${"%.2f".format(inputValue)} $fromUnit = ${"%.4f".format(result)} $toUnit"
 
             } catch (e: NumberFormatException) {
@@ -153,7 +153,7 @@ class storageActivity : AppCompatActivity() {
                 val result = valueInBase / conversionRates[fromUnit]!!
 
                 // Update the input field
-                inputNumber.setText("%.4f".format(result))
+                inputNumber.setText("%.2f".format(result))
                 //resultText.text = "Conversion: ${"%.2f".format(outputValue)} $toUnit = ${"%.4f".format(result)} $fromUnit"
 
             } catch (e: NumberFormatException) {

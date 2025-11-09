@@ -20,14 +20,24 @@ class WeightActivity : AppCompatActivity() {
     private lateinit var toSpinner: Spinner
     //private lateinit var resultText: TextView
 
+    /*
+    this is the change to be committed on github
+
+
+
+
+
+
+     */
+
     // Available speed units
-    private val weightUnits = arrayOf("Pa", "bar", "kPa")
+    private val weightUnits = arrayOf("g", "kg")
 
     // how many of my base units are in one of this unit.
     private val conversionRates = mapOf(
-        "Pa" to 1.0,
-        "bar" to 1.0e5,
-        "kPa" to 1000.000,
+        "g" to 1.0,
+        "kg" to 1.035,
+
     )
 
     // To prevent infinite loop when programmatically setting text
@@ -124,7 +134,7 @@ class WeightActivity : AppCompatActivity() {
                 val result = valueInBase / conversionRates[toUnit]!!
 
                 // Update the output field
-                outputNumber.setText("%.4f".format(result))
+                outputNumber.setText("%.2f".format(result))
                 //resultText.text = "Conversion: ${"%.2f".format(inputValue)} $fromUnit = ${"%.4f".format(result)} $toUnit"
 
             } catch (e: NumberFormatException) {
@@ -151,7 +161,7 @@ class WeightActivity : AppCompatActivity() {
                 val result = valueInBase / conversionRates[fromUnit]!!
 
                 // Update the input field
-                inputNumber.setText("%.4f".format(result))
+                inputNumber.setText("%.2f".format(result))
                 //resultText.text = "Conversion: ${"%.2f".format(outputValue)} $toUnit = ${"%.4f".format(result)} $fromUnit"
 
             } catch (e: NumberFormatException) {
